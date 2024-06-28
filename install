@@ -1,0 +1,8 @@
+echo "Installing git..."
+sudo apt-get update > /dev/null
+sudo apt-get install -y git > /dev/null
+
+echo "Cloning stable DevEv..."
+git clone -b stable https://github.com/jameswlane/devex.git ~/.local/share/devex > /dev/null
+
+source ~/.local/share/devex/install.sh
