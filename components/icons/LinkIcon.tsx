@@ -1,6 +1,6 @@
 import type React from 'react'
 
-function LinkIcon(props: React.SVGProps<SVGSVGElement>) {
+export function LinkIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

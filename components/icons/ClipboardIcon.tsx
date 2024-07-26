@@ -1,6 +1,6 @@
 import type React from 'react'
 
-function ClipboardIcon(props: React.SVGProps<SVGSVGElement>) {
+export function ClipboardIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

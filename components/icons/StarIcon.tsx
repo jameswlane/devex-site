@@ -1,6 +1,6 @@
 import type React from 'react'
 
-function StarIcon(props: React.SVGProps<SVGSVGElement>) {
+export function StarIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

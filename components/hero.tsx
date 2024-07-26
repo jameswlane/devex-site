@@ -1,9 +1,13 @@
 "use client"
 
+import React from "react"
 import Link from "next/link"
+
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import React from "react"
+import { CopyIcon } from "@/components/icons/CopyIcon"
+import { GitHubIcon } from "@/components/icons/GitHubIcon"
+import { TerminalIcon } from "@/components/icons/TerminalIcon"
 
 export function Hero() {
   return (
@@ -39,7 +43,7 @@ export function Hero() {
           className="flex items-center space-x-2 hover:text-gray-300"
           prefetch={false}
         >
-          <GithubIcon className="w-5 h-5" />
+          <GitHubIcon className="w-5 h-5" />
           <span>GitHub</span>
         </Link>
       </header>

@@ -1,3 +1,8 @@
+import {BrushIcon} from "@/components/icons/BrushIcon";
+import {PackageIcon} from "@/components/icons/PackageIcon";
+import {TerminalIcon} from "@/components/icons/TerminalIcon";
+import {ZapIcon} from "@/components/icons/ZapIcon";
+
 export function Section() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">

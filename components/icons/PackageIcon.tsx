@@ -1,6 +1,6 @@
 import type React from 'react'
 
-function PackageIcon(props: React.SVGProps<SVGSVGElement>) {
+export function PackageIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

@@ -1,7 +1,12 @@
-import { Card } from "@/components/ui/card"
 import Link from "next/link"
 
-export function Card() {
+import { Card } from "@/components/ui/card"
+import { TagIcon }  from "@/components/icons/TagIcon"
+import { LinkIcon } from "@/components/icons/LinkIcon"
+import { GitHubIcon } from "@/components/icons/GitHubIcon"
+import { StarIcon } from "@/components/icons/StarIcon"
+
+export function ApplicationCard() {
   return (
     <Card className="w-full max-w-md p-6 grid gap-6 relative">
       <div className="flex items-center gap-4">
@@ -33,7 +38,7 @@ export function Card() {
           </Link>
         </div>
         <div className="flex items-center gap-2 text-muted-foreground">
-          <GithubIcon className="w-4 h-4" />
+          <GitHubIcon className="w-4 h-4" />
           <Link href="#" className="hover:underline" prefetch={false}>
             vercel/vercel
           </Link>

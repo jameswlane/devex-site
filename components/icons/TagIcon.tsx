@@ -1,6 +1,6 @@
 import type React from 'react'
 
-function TagIcon(props: React.SVGProps<SVGSVGElement>) {
+export function TagIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

@@ -1,6 +1,10 @@
 import Link from "next/link"
+
 import { Input } from "@/components/ui/input"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import {TerminalIcon} from "@/components/icons/TerminalIcon";
+import {GitHubIcon} from "@/components/icons/GitHubIcon";
+
 
 export function Main() {
   return (
@@ -82,7 +86,7 @@ export function Main() {
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
               <img
                 src="/placeholder.svg"
-                alt="Image"
+                alt="Placeholder"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
               />
               <div className="flex flex-col justify-center space-y-4">
@@ -166,7 +170,7 @@ export function Main() {
                                 <div className="flex justify-between">
                                   <span className="text-muted-foreground">Category: Terminal</span>
                                   <Link href="#" target="_blank" rel="noopener noreferrer" prefetch={false}>
-                                    <GithubIcon className="w-4 h-4" />
+                                    <GitHubIcon className="w-4 h-4" />
                                   </Link>
                                 </div>
                               </CardContent>
@@ -188,7 +192,7 @@ export function Main() {
                                 <div className="flex justify-between">
                                   <span className="text-muted-foreground">Category: Package Manager</span>
                                   <Link href="#" target="_blank" rel="noopener noreferrer" prefetch={false}>
-                                    <GithubIcon className="w-4 h-4" />
+                                    <GitHubIcon className="w-4 h-4" />
                                   </Link>
                                 </div>
                               </CardContent>
@@ -215,7 +219,7 @@ export function Main() {
                                 <div className="flex justify-between">
                                   <span className="text-muted-foreground">Category: Code Editor</span>
                                   <Link href="#" target="_blank" rel="noopener noreferrer" prefetch={false}>
-                                    <GithubIcon className="w-4 h-4" />
+                                    <GitHubIcon className="w-4 h-4" />
                                   </Link>
                                 </div>
                               </CardContent>
@@ -237,7 +241,7 @@ export function Main() {
                                 <div className="flex justify-between">
                                   <span className="text-muted-foreground">Category: IDE</span>
                                   <Link href="#" target="_blank" rel="noopener noreferrer" prefetch={false}>
-                                    <GithubIcon className="w-4 h-4" />
+                                    <GitHubIcon className="w-4 h-4" />
                                   </Link>
                                 </div>
                               </CardContent>

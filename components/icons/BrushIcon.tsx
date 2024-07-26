@@ -1,6 +1,6 @@
 import type React from 'react'
 
-function BrushIcon(props: React.SVGProps<SVGSVGElement>) {
+export function BrushIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

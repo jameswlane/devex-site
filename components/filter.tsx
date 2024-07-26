@@ -1,18 +1,19 @@
 "use client"
-
+import type React from "react"
 import { useState, useMemo } from "react"
-import { Input } from "@/components/ui/input"
+import Link from "next/link"
+
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { categories, os, applications} from "@/data/applications";
-import Link from "next/link"
 
 export function Filter() {
   const initialState = {
-    category: [],
-    required: [],
-    os: [],
+    category: [] as string[],
+    required: undefined  as boolean | undefined,
+    os: [] as string[],
     search: "",
   };
   const [filters, setFilters] = useState(initialState)
@@ -21,25 +22,37 @@ export function Filter() {
     return items.filter((item) => {
       const searchMatch = item.name.toLowerCase().includes(filters.search.toLowerCase())
       const categoryMatch = filters.category.length === 0 || filters.category.some((cat) => item.category.includes(cat))
-      const requiredMatch = filters.required === null || filters.required === undefined || filters.required === item.required;
+      const requiredMatch = filters.required === undefined || filters.required === item.required;
       const osMatch = filters.os.length === 0 || filters.os.every((os) => item.os.includes(os))
       return searchMatch && categoryMatch && requiredMatch && osMatch
     })
-  }, [filters])
-  const handleFilterChange = (type, value) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [type]: prevFilters[type].includes(value)
-        ? prevFilters[type].filter((item) => item !== value)
-        : [...prevFilters[type], value],
-    }))
-  }
-  const handleSearch = (e) => {
+  }, [filters, items])
+
+  type FilterType = 'category' | 'os' | 'required' | 'search';
+  const handleFilterChange = (type: FilterType, value: string | boolean) => {
+    setFilters((prevFilters) => {
+      const currentFilter = prevFilters[type];
+      if (Array.isArray(currentFilter)) {
+        return {
+          ...prevFilters,
+          [type]: currentFilter.includes(value as string)
+              ? currentFilter.filter((item: string) => item !== value)
+              : [...currentFilter, value],
+        };
+      }
+      return {
+        ...prevFilters,
+        [type]: value,
+      };
+    });
+  };
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       search: e.target.value,
-    }))
-  }
+    }));
+  };
   return (
     <section className="w-full py-12 md:py-16 lg:py-20">
       <div className="container px-4 md:px-6">
@@ -84,8 +97,8 @@ export function Filter() {
                       {["True", "False"].map((req) => (
                         <Label key={req} className="flex items-center gap-2 font-normal">
                           <Checkbox
-                            checked={filters.required.includes(req)}
-                            onCheckedChange={() => handleFilterChange("required", req)}
+                              checked={filters.required === (req === "True")}
+                              onCheckedChange={() => handleFilterChange("required", req)}
                           />
                           {req}
                         </Label>
@@ -126,7 +139,7 @@ export function Filter() {
                     className="w-full h-48 object-cover group-hover:opacity-80 transition-opacity"
                   />
                   <div className="p-4">
-                    <h3 className="text-lg font-semibold">{item.title}</h3>
+                    <h3 className="text-lg font-semibold">{item.name}</h3>
                     <p className="text-muted-foreground">{item.description}</p>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {item.category.map((cat) => (
