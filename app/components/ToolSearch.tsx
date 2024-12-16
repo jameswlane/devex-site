@@ -2,39 +2,7 @@
 
 import { useState } from 'react'
 import { FaGithub, FaGlobe } from 'react-icons/fa'
-
-interface Tool {
-    name: string
-    description: string
-    categories: string[]
-    gitUrl?: string
-    websiteUrl?: string
-}
-
-const tools: Tool[] = [
-    {
-        name: 'Git',
-        description: 'Distributed version control system for tracking changes in source code during software development.',
-        categories: ['Version Control', 'Development Tool'],
-        gitUrl: 'https://github.com/git/git',
-        websiteUrl: 'https://git-scm.com/'
-    },
-    {
-        name: 'Node.js',
-        description: 'JavaScript runtime built on Chrome\'s V8 JavaScript engine for server-side and networking applications.',
-        categories: ['Runtime', 'JavaScript'],
-        gitUrl: 'https://github.com/nodejs/node',
-        websiteUrl: 'https://nodejs.org/'
-    },
-    {
-        name: 'Docker',
-        description: 'Platform for developing, shipping, and running applications in containers.',
-        categories: ['Containerization', 'DevOps'],
-        gitUrl: 'https://github.com/docker/docker-ce',
-        websiteUrl: 'https://www.docker.com/'
-    },
-    // Add more tools here
-]
+import { tools } from '../tools'
 
 export function ToolSearch() {
     const [searchTerm, setSearchTerm] = useState('')
