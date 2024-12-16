@@ -59,21 +59,22 @@ echo "Extracting DevEx to $INSTALL_DIR..."
 tar -xzf "$FILENAME" -C "$INSTALL_DIR"
 
 # Ensure binary is executable
-chmod +x "$INSTALL_DIR/devex/bin/devex"
+chmod +x "$INSTALL_DIR/bin/devex"
 
 # Cleanup
 cd ~
 rm -rf "$TEMP_DIR"
 
 # Update PATH if needed
-if ! echo "$PATH" | grep -q "$HOME/.local/share/devex/bin"; then
+if ! echo "$PATH" | grep -q "$INSTALL_DIR/bin"; then
     echo "Updating PATH..."
     echo "export PATH=\"\$PATH:$INSTALL_DIR/bin\"" >> "$HOME/.bashrc"
-    source "$HOME/.bashrc"
+    # Apply the updated PATH to the current session
+    export PATH="$PATH:$INSTALL_DIR/bin"
 fi
 
 # Run the CLI with sudo permissions if needed
 echo "Running DevEx CLI..."
-sudo "$INSTALL_DIR/devex/bin/devex"
+sudo "$INSTALL_DIR/bin/devex"
 
 echo "DevEx installation and setup complete."
