@@ -35,7 +35,6 @@ echo "Downloading DevEx release: $FILENAME"
 
 # Create a temporary directory for download
 TEMP_DIR=$(mktemp -d)
-echo "Creating temporary directory: $TEMP_DIR"
 cd "$TEMP_DIR"
 
 # Download the tarball and checksum file
@@ -52,36 +51,29 @@ fi
 
 echo "Checksum verification passed."
 
-# Extract the binary
-echo "Extracting DevEx..."
-tar -xzf "$FILENAME"
-
-# Install the binary
+# Install to target directory
 INSTALL_DIR="$HOME/.local/share/devex"
 mkdir -p "$INSTALL_DIR"
-echo "Moving files to $INSTALL_DIR..."
-mv ./* "$INSTALL_DIR"
+
+echo "Extracting DevEx to $INSTALL_DIR..."
+tar -xzf "$FILENAME" -C "$INSTALL_DIR"
 
 # Ensure binary is executable
-chmod +x "$INSTALL_DIR/bin/devex"
+chmod +x "$INSTALL_DIR/devex/bin/devex"
 
 # Cleanup
 cd ~
 rm -rf "$TEMP_DIR"
 
 # Update PATH if needed
-if ! echo "$PATH" | grep -q "$INSTALL_DIR"; then
+if ! echo "$PATH" | grep -q "$HOME/.local/share/devex/bin"; then
     echo "Updating PATH..."
-    echo "export PATH=\"\$PATH:$INSTALL_DIR\bin"" >> "$HOME/.bashrc"
+    echo "export PATH=\"\$PATH:$INSTALL_DIR/bin\"" >> "$HOME/.bashrc"
     source "$HOME/.bashrc"
 fi
 
 # Run the CLI with sudo permissions if needed
 echo "Running DevEx CLI..."
-if [ "$OS" == "darwin" ]; then
-    sudo "$INSTALL_DIR/devex"
-else
-    sudo "$INSTALL_DIR/devex"
-fi
+sudo "$INSTALL_DIR/devex/bin/devex"
 
 echo "DevEx installation and setup complete."
