@@ -128,10 +128,10 @@ export const tools: Tool[] = [
     },
     {
         name: 'mise',
-        description: 'A modern, user-friendly package manager for Linux.',
-        categories: ['Package Management', 'Linux'],
-        gitUrl: 'https://github.com/mise/mise',
-        websiteUrl: 'https://mise.io/'
+        description: 'mise is a tool that manages installations of programming language runtimes and other tools for local development',
+        categories: ['Development Tool', 'Productivity'],
+        gitUrl: 'https://github.com/jdx/mise',
+        websiteUrl: 'https://mise.jdx.dev/'
     },
     {
         name: 'nala',

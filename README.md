@@ -1,6 +1,3 @@
-Here is a `README.md` template for your Next.js project using `pnpm` and `mise`:
-
-```markdown
 # devex-site
 
 ## Overview
@@ -70,6 +67,3 @@ Contributions are welcome! Please open an issue or submit a pull request.
 ## License
 
 This project is licensed under the MIT License.
-```
-
-This template provides an overview of the project, installation instructions, and commands for development and production. Adjust the URLs and details as needed for your specific project.
