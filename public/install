@@ -56,10 +56,10 @@ echo "Extracting DevEx..."
 tar -xzf "$FILENAME"
 
 # Install the binary
-INSTALL_DIR="$HOME/.local/bin"
+INSTALL_DIR="$HOME/.local/share/devex"
 mkdir -p "$INSTALL_DIR"
-mv devex "$INSTALL_DIR/"
-chmod +x "$INSTALL_DIR/devex"
+mv devex "$INSTALL_DIR"
+chmod +x "$INSTALL_DIR"
 
 # Cleanup
 cd ~
@@ -68,16 +68,16 @@ rm -rf "$TEMP_DIR"
 # Update PATH if needed
 if ! echo "$PATH" | grep -q "$INSTALL_DIR"; then
     echo "Updating PATH..."
-    echo "export PATH=\"\$PATH:$INSTALL_DIR\"" >> "$HOME/.bashrc"
+    echo "export PATH=\"\$PATH:$INSTALL_DIR\bin"" >> "$HOME/.bashrc"
     source "$HOME/.bashrc"
 fi
 
 # Run the CLI with sudo permissions if needed
 echo "Running DevEx CLI..."
 if [ "$OS" == "darwin" ]; then
-    sudo "$INSTALL_DIR/devex" --macos
+    sudo "$INSTALL_DIR/devex"
 else
-    sudo "$INSTALL_DIR/devex" --linux
+    sudo "$INSTALL_DIR/devex"
 fi
 
 echo "DevEx installation and setup complete."
