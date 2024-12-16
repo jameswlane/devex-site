@@ -35,6 +35,7 @@ echo "Downloading DevEx release: $FILENAME"
 
 # Create a temporary directory for download
 TEMP_DIR=$(mktemp -d)
+echo "Creating temporary directory: $TEMP_DIR"
 cd "$TEMP_DIR"
 
 # Download the tarball and checksum file
@@ -58,8 +59,11 @@ tar -xzf "$FILENAME"
 # Install the binary
 INSTALL_DIR="$HOME/.local/share/devex"
 mkdir -p "$INSTALL_DIR"
-mv devex "$INSTALL_DIR"
-chmod +x "$INSTALL_DIR"
+echo "Moving files to $INSTALL_DIR..."
+mv ./* "$INSTALL_DIR"
+
+# Ensure binary is executable
+chmod +x "$INSTALL_DIR/bin/devex"
 
 # Cleanup
 cd ~
