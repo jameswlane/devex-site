@@ -17,7 +17,7 @@ esac
 
 # Fetch the latest release version dynamically
 echo "Fetching the latest DevEx release version..."
-LATEST_VERSION=$(curl -s https://api.github.com/repos/jameswlane/devex/releases/latest | grep -Po '"tag_name": "\K.*?(?=")')
+LATEST_VERSION=$(wget -qO- https://api.github.com/repos/jameswlane/devex/releases/latest | grep -Po '"tag_name": "\K.*?(?=")')
 
 if [ -z "$LATEST_VERSION" ]; then
     echo "Failed to fetch the latest release version. Exiting."
@@ -38,8 +38,8 @@ TEMP_DIR=$(mktemp -d)
 cd "$TEMP_DIR"
 
 # Download the tarball and checksum file
-curl -LO "$BASE_URL/$FILENAME"
-curl -LO "$BASE_URL/$CHECKSUM_FILE"
+wget "$BASE_URL/$FILENAME"
+wget "$BASE_URL/$CHECKSUM_FILE"
 
 # Verify checksum
 echo "Verifying checksum..."
